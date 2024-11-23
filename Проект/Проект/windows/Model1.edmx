@@ -1,0 +1,689 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище Yacenko_12Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Animals">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameAnimals" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Autos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameAuto" Type="varchar" MaxLength="50" />
+          <Property Name="PostID" Type="int" />
+        </EntityType>
+        <EntityType Name="Buyer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocationB" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Culture">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameCulture" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Employes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="50" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Gender" Type="varchar" MaxLength="25" />
+          <Property Name="Telephon" Type="varchar" MaxLength="25" />
+          <Property Name="Pasport" Type="int" />
+          <Property Name="PostID" Type="int" />
+        </EntityType>
+        <EntityType Name="Farms">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="locationWH" Type="varchar" MaxLength="100" />
+          <Property Name="Capacity" Type="int" />
+          <Property Name="AnimalsID" Type="int" />
+          <Property Name="EmployesID" Type="int" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NamePost" Type="varchar" MaxLength="50" />
+          <Property Name="Salary" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transactions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="BuyerID" Type="int" Nullable="false" />
+          <Property Name="SubjectSale" Type="varchar" MaxLength="50" />
+          <Property Name="IDFarms" Type="int" />
+          <Property Name="QuantityAnimals" Type="int" />
+          <Property Name="IdWH" Type="int" />
+          <Property Name="QuantityCulture" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WareHouse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="locationWH" Type="varchar" MaxLength="100" />
+          <Property Name="Capacity" Type="int" />
+          <Property Name="CultureID" Type="int" />
+          <Property Name="EmployesID" Type="int" />
+        </EntityType>
+        <Association Name="FK__Autos__PostID__46E78A0C">
+          <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+          <End Role="Autos" Type="Self.Autos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Autos">
+              <PropertyRef Name="PostID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employes__PostID__38996AB5">
+          <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+          <End Role="Employes" Type="Self.Employes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Employes">
+              <PropertyRef Name="PostID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Farms__AnimalsID__4316F928">
+          <End Role="Animals" Type="Self.Animals" Multiplicity="0..1" />
+          <End Role="Farms" Type="Self.Farms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animals">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Farms">
+              <PropertyRef Name="AnimalsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Farms__EmployesI__440B1D61">
+          <End Role="Employes" Type="Self.Employes" Multiplicity="0..1" />
+          <End Role="Farms" Type="Self.Farms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Farms">
+              <PropertyRef Name="EmployesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__Buyer__4BAC3F29">
+          <End Role="Buyer" Type="Self.Buyer" Multiplicity="1" />
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buyer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="BuyerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__IDFar__4CA06362">
+          <End Role="Farms" Type="Self.Farms" Multiplicity="0..1" />
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Farms">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="IDFarms" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transactio__IdWH__4D94879B">
+          <End Role="WareHouse" Type="Self.WareHouse" Multiplicity="0..1" />
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WareHouse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="IdWH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WareHouse__Cultu__3D5E1FD2">
+          <End Role="Culture" Type="Self.Culture" Multiplicity="0..1" />
+          <End Role="WareHouse" Type="Self.WareHouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Culture">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="WareHouse">
+              <PropertyRef Name="CultureID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WareHouse__Emplo__3E52440B">
+          <End Role="Employes" Type="Self.Employes" Multiplicity="0..1" />
+          <End Role="WareHouse" Type="Self.WareHouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="WareHouse">
+              <PropertyRef Name="EmployesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_GetAutoMovementReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_GetSalesReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="Хранилище Yacenko_12ModelContainer">
+          <EntitySet Name="Animals" EntityType="Self.Animals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Autos" EntityType="Self.Autos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Buyer" EntityType="Self.Buyer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Culture" EntityType="Self.Culture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employes" EntityType="Self.Employes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Farms" EntityType="Self.Farms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transactions" EntityType="Self.Transactions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WareHouse" EntityType="Self.WareHouse" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Autos__PostID__46E78A0C" Association="Self.FK__Autos__PostID__46E78A0C">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Autos" EntitySet="Autos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employes__PostID__38996AB5" Association="Self.FK__Employes__PostID__38996AB5">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Employes" EntitySet="Employes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Farms__AnimalsID__4316F928" Association="Self.FK__Farms__AnimalsID__4316F928">
+            <End Role="Animals" EntitySet="Animals" />
+            <End Role="Farms" EntitySet="Farms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Farms__EmployesI__440B1D61" Association="Self.FK__Farms__EmployesI__440B1D61">
+            <End Role="Employes" EntitySet="Employes" />
+            <End Role="Farms" EntitySet="Farms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__Buyer__4BAC3F29" Association="Self.FK__Transacti__Buyer__4BAC3F29">
+            <End Role="Buyer" EntitySet="Buyer" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__IDFar__4CA06362" Association="Self.FK__Transacti__IDFar__4CA06362">
+            <End Role="Farms" EntitySet="Farms" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transactio__IdWH__4D94879B" Association="Self.FK__Transactio__IdWH__4D94879B">
+            <End Role="WareHouse" EntitySet="WareHouse" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WareHouse__Cultu__3D5E1FD2" Association="Self.FK__WareHouse__Cultu__3D5E1FD2">
+            <End Role="Culture" EntitySet="Culture" />
+            <End Role="WareHouse" EntitySet="WareHouse" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WareHouse__Emplo__3E52440B" Association="Self.FK__WareHouse__Emplo__3E52440B">
+            <End Role="Employes" EntitySet="Employes" />
+            <End Role="WareHouse" EntitySet="WareHouse" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Yacenko_12Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Animals">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameAnimals" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Farms" Relationship="Self.FK__Farms__AnimalsID__4316F928" FromRole="Animals" ToRole="Farms" />
+        </EntityType>
+        <EntityType Name="Autos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameAuto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PostID" Type="Int32" />
+          <NavigationProperty Name="Post" Relationship="Self.FK__Autos__PostID__46E78A0C" FromRole="Autos" ToRole="Post" />
+        </EntityType>
+        <EntityType Name="Buyer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocationB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__Buyer__4BAC3F29" FromRole="Buyer" ToRole="Transactions" />
+        </EntityType>
+        <EntityType Name="Culture">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameCulture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="WareHouse" Relationship="Self.FK__WareHouse__Cultu__3D5E1FD2" FromRole="Culture" ToRole="WareHouse" />
+        </EntityType>
+        <EntityType Name="Employes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Gender" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Telephon" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Pasport" Type="Int32" />
+          <Property Name="PostID" Type="Int32" />
+          <NavigationProperty Name="Post" Relationship="Self.FK__Employes__PostID__38996AB5" FromRole="Employes" ToRole="Post" />
+          <NavigationProperty Name="Farms" Relationship="Self.FK__Farms__EmployesI__440B1D61" FromRole="Employes" ToRole="Farms" />
+          <NavigationProperty Name="WareHouse" Relationship="Self.FK__WareHouse__Emplo__3E52440B" FromRole="Employes" ToRole="WareHouse" />
+        </EntityType>
+        <EntityType Name="Farms">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="locationWH" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Capacity" Type="Int32" />
+          <Property Name="AnimalsID" Type="Int32" />
+          <Property Name="EmployesID" Type="Int32" />
+          <NavigationProperty Name="Animals" Relationship="Self.FK__Farms__AnimalsID__4316F928" FromRole="Farms" ToRole="Animals" />
+          <NavigationProperty Name="Employes" Relationship="Self.FK__Farms__EmployesI__440B1D61" FromRole="Farms" ToRole="Employes" />
+          <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__IDFar__4CA06362" FromRole="Farms" ToRole="Transactions" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NamePost" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Salary" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Autos" Relationship="Self.FK__Autos__PostID__46E78A0C" FromRole="Post" ToRole="Autos" />
+          <NavigationProperty Name="Employes" Relationship="Self.FK__Employes__PostID__38996AB5" FromRole="Post" ToRole="Employes" />
+        </EntityType>
+        <EntityType Name="Transactions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Amount" Type="Int32" />
+          <Property Name="BuyerID" Type="Int32" Nullable="false" />
+          <Property Name="SubjectSale" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDFarms" Type="Int32" />
+          <Property Name="QuantityAnimals" Type="Int32" />
+          <Property Name="IdWH" Type="Int32" />
+          <Property Name="QuantityCulture" Type="Int32" />
+          <NavigationProperty Name="Buyer" Relationship="Self.FK__Transacti__Buyer__4BAC3F29" FromRole="Transactions" ToRole="Buyer" />
+          <NavigationProperty Name="Farms" Relationship="Self.FK__Transacti__IDFar__4CA06362" FromRole="Transactions" ToRole="Farms" />
+          <NavigationProperty Name="WareHouse" Relationship="Self.FK__Transactio__IdWH__4D94879B" FromRole="Transactions" ToRole="WareHouse" />
+        </EntityType>
+        <EntityType Name="WareHouse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="locationWH" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Capacity" Type="Int32" />
+          <Property Name="CultureID" Type="Int32" />
+          <Property Name="EmployesID" Type="Int32" />
+          <NavigationProperty Name="Culture" Relationship="Self.FK__WareHouse__Cultu__3D5E1FD2" FromRole="WareHouse" ToRole="Culture" />
+          <NavigationProperty Name="Employes" Relationship="Self.FK__WareHouse__Emplo__3E52440B" FromRole="WareHouse" ToRole="Employes" />
+          <NavigationProperty Name="Transactions" Relationship="Self.FK__Transactio__IdWH__4D94879B" FromRole="WareHouse" ToRole="Transactions" />
+        </EntityType>
+        <Association Name="FK__Farms__AnimalsID__4316F928">
+          <End Role="Animals" Type="Self.Animals" Multiplicity="0..1" />
+          <End Role="Farms" Type="Self.Farms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animals">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Farms">
+              <PropertyRef Name="AnimalsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Autos__PostID__46E78A0C">
+          <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+          <End Role="Autos" Type="Self.Autos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Autos">
+              <PropertyRef Name="PostID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__Buyer__4BAC3F29">
+          <End Role="Buyer" Type="Self.Buyer" Multiplicity="1" />
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buyer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="BuyerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WareHouse__Cultu__3D5E1FD2">
+          <End Role="Culture" Type="Self.Culture" Multiplicity="0..1" />
+          <End Role="WareHouse" Type="Self.WareHouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Culture">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="WareHouse">
+              <PropertyRef Name="CultureID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employes__PostID__38996AB5">
+          <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+          <End Role="Employes" Type="Self.Employes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Employes">
+              <PropertyRef Name="PostID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Farms__EmployesI__440B1D61">
+          <End Role="Employes" Type="Self.Employes" Multiplicity="0..1" />
+          <End Role="Farms" Type="Self.Farms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Farms">
+              <PropertyRef Name="EmployesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WareHouse__Emplo__3E52440B">
+          <End Role="Employes" Type="Self.Employes" Multiplicity="0..1" />
+          <End Role="WareHouse" Type="Self.WareHouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="WareHouse">
+              <PropertyRef Name="EmployesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__IDFar__4CA06362">
+          <End Role="Farms" Type="Self.Farms" Multiplicity="0..1" />
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Farms">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="IDFarms" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transactio__IdWH__4D94879B">
+          <End Role="WareHouse" Type="Self.WareHouse" Multiplicity="0..1" />
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WareHouse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="IdWH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Yacenko_12Entities455" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Animals" EntityType="Self.Animals" />
+          <EntitySet Name="Autos" EntityType="Self.Autos" />
+          <EntitySet Name="Buyer" EntityType="Self.Buyer" />
+          <EntitySet Name="Culture" EntityType="Self.Culture" />
+          <EntitySet Name="Employes" EntityType="Self.Employes" />
+          <EntitySet Name="Farms" EntityType="Self.Farms" />
+          <EntitySet Name="Post" EntityType="Self.Post" />
+          <EntitySet Name="Transactions" EntityType="Self.Transactions" />
+          <EntitySet Name="WareHouse" EntityType="Self.WareHouse" />
+          <AssociationSet Name="FK__Farms__AnimalsID__4316F928" Association="Self.FK__Farms__AnimalsID__4316F928">
+            <End Role="Animals" EntitySet="Animals" />
+            <End Role="Farms" EntitySet="Farms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Autos__PostID__46E78A0C" Association="Self.FK__Autos__PostID__46E78A0C">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Autos" EntitySet="Autos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__Buyer__4BAC3F29" Association="Self.FK__Transacti__Buyer__4BAC3F29">
+            <End Role="Buyer" EntitySet="Buyer" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WareHouse__Cultu__3D5E1FD2" Association="Self.FK__WareHouse__Cultu__3D5E1FD2">
+            <End Role="Culture" EntitySet="Culture" />
+            <End Role="WareHouse" EntitySet="WareHouse" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employes__PostID__38996AB5" Association="Self.FK__Employes__PostID__38996AB5">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Employes" EntitySet="Employes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Farms__EmployesI__440B1D61" Association="Self.FK__Farms__EmployesI__440B1D61">
+            <End Role="Employes" EntitySet="Employes" />
+            <End Role="Farms" EntitySet="Farms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WareHouse__Emplo__3E52440B" Association="Self.FK__WareHouse__Emplo__3E52440B">
+            <End Role="Employes" EntitySet="Employes" />
+            <End Role="WareHouse" EntitySet="WareHouse" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__IDFar__4CA06362" Association="Self.FK__Transacti__IDFar__4CA06362">
+            <End Role="Farms" EntitySet="Farms" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transactio__IdWH__4D94879B" Association="Self.FK__Transactio__IdWH__4D94879B">
+            <End Role="WareHouse" EntitySet="WareHouse" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+          <FunctionImport Name="sp_GetSalesReport" ReturnType="Collection(Yacenko_12Model.sp_GetSalesReport_Result)" />
+          <EntitySet Name="Users" EntityType="Yacenko_12Model.Users" />
+          <FunctionImport Name="sp_GetAutoMovementReport" ReturnType="Collection(Yacenko_12Model.sp_GetAutoMovementReport_Result)" />
+        </EntityContainer>
+        <ComplexType Name="sp_GetSalesReport_Result">
+          <Property Type="Int32" Name="TransactionID" Nullable="false" />
+          <Property Type="String" Name="BuyerLocation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SubjectSale" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="QuantityAnimals" Nullable="true" />
+          <Property Type="Int32" Name="QuantityCulture" Nullable="true" />
+          <Property Type="Int32" Name="Amount" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="sp_GetAutoMovementReport_Result">
+          <Property Type="String" Name="NameAuto" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NamePost" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Yacenko_12ModelContainer" CdmEntityContainer="Yacenko_12Entities455">
+          <EntitySetMapping Name="Animals">
+            <EntityTypeMapping TypeName="Yacenko_12Model.Animals">
+              <MappingFragment StoreEntitySet="Animals">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="NameAnimals" ColumnName="NameAnimals" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Autos">
+            <EntityTypeMapping TypeName="Yacenko_12Model.Autos">
+              <MappingFragment StoreEntitySet="Autos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="NameAuto" ColumnName="NameAuto" />
+                <ScalarProperty Name="PostID" ColumnName="PostID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Buyer">
+            <EntityTypeMapping TypeName="Yacenko_12Model.Buyer">
+              <MappingFragment StoreEntitySet="Buyer">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="LocationB" ColumnName="LocationB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Culture">
+            <EntityTypeMapping TypeName="Yacenko_12Model.Culture">
+              <MappingFragment StoreEntitySet="Culture">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="NameCulture" ColumnName="NameCulture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employes">
+            <EntityTypeMapping TypeName="Yacenko_12Model.Employes">
+              <MappingFragment StoreEntitySet="Employes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Telephon" ColumnName="Telephon" />
+                <ScalarProperty Name="Pasport" ColumnName="Pasport" />
+                <ScalarProperty Name="PostID" ColumnName="PostID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Farms">
+            <EntityTypeMapping TypeName="Yacenko_12Model.Farms">
+              <MappingFragment StoreEntitySet="Farms">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="locationWH" ColumnName="locationWH" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="AnimalsID" ColumnName="AnimalsID" />
+                <ScalarProperty Name="EmployesID" ColumnName="EmployesID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Post">
+            <EntityTypeMapping TypeName="Yacenko_12Model.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="NamePost" ColumnName="NamePost" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transactions">
+            <EntityTypeMapping TypeName="Yacenko_12Model.Transactions">
+              <MappingFragment StoreEntitySet="Transactions">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="BuyerID" ColumnName="BuyerID" />
+                <ScalarProperty Name="SubjectSale" ColumnName="SubjectSale" />
+                <ScalarProperty Name="IDFarms" ColumnName="IDFarms" />
+                <ScalarProperty Name="QuantityAnimals" ColumnName="QuantityAnimals" />
+                <ScalarProperty Name="IdWH" ColumnName="IdWH" />
+                <ScalarProperty Name="QuantityCulture" ColumnName="QuantityCulture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WareHouse">
+            <EntityTypeMapping TypeName="Yacenko_12Model.WareHouse">
+              <MappingFragment StoreEntitySet="WareHouse">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="locationWH" ColumnName="locationWH" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="CultureID" ColumnName="CultureID" />
+                <ScalarProperty Name="EmployesID" ColumnName="EmployesID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetSalesReport" FunctionName="Хранилище Yacenko_12Model.sp_GetSalesReport">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Yacenko_12Model.sp_GetSalesReport_Result">
+                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+                <ScalarProperty Name="BuyerLocation" ColumnName="BuyerLocation" />
+                <ScalarProperty Name="SubjectSale" ColumnName="SubjectSale" />
+                <ScalarProperty Name="QuantityAnimals" ColumnName="QuantityAnimals" />
+                <ScalarProperty Name="QuantityCulture" ColumnName="QuantityCulture" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Yacenko_12Model.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetAutoMovementReport" FunctionName="Хранилище Yacenko_12Model.sp_GetAutoMovementReport">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Yacenko_12Model.sp_GetAutoMovementReport_Result">
+                <ScalarProperty Name="NameAuto" ColumnName="NameAuto" />
+                <ScalarProperty Name="NamePost" ColumnName="NamePost" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

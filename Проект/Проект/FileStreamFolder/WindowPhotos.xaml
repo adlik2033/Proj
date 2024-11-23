@@ -1,0 +1,21 @@
+﻿<Window x:Class="Проект.FileStreamFolder.WindowPhotos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Проект.FileStream"
+        mc:Ignorable="d"
+        Title="WindowPhotos" Height="450" Width="800">
+    <StackPanel>
+        <TextBlock Text="Выбор фото организации" FontSize="30" FontFamily="Times New Roman" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <DataGrid Name="dgPhotos" HorizontalAlignment="Center" Height="auto" AutoGenerateColumns="False" VerticalAlignment="Top" Width="Auto" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding id}" Header="Id"/>
+                <DataGridTextColumn Binding="{Binding Image}" Header="Image"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Image x:Name="image" Width="auto" Height="auto"/>
+        <Button Click="SelectImage" Content="Выбрать изображение" VerticalAlignment="Bottom"/>
+        <Button Click="LoadImage" Content="Загрузить изображение" VerticalAlignment="Bottom"/>
+    </StackPanel>
+</Window>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="27332791052046cbb666e9a4bbd0914c" Name="Diagram1">
+        <EntityTypeShape EntityType="Yacenko_12Model.Animals" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Yacenko_12Model.Autos" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="Yacenko_12Model.Buyer" Width="1.5" PointX="8.25" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="Yacenko_12Model.Culture" Width="1.5" PointX="6" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Yacenko_12Model.Employes" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Yacenko_12Model.Farms" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Yacenko_12Model.Post" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Yacenko_12Model.Transactions" Width="1.5" PointX="10.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Yacenko_12Model.WareHouse" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="Yacenko_12Model.FK__Farms__AnimalsID__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="Yacenko_12Model.FK__Autos__PostID__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="Yacenko_12Model.FK__Transacti__Buyer__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="Yacenko_12Model.FK__WareHouse__Cultu__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="Yacenko_12Model.FK__Employes__PostID__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="Yacenko_12Model.FK__Farms__EmployesI__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="Yacenko_12Model.FK__WareHouse__Emplo__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="Yacenko_12Model.FK__Transacti__IDFar__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="Yacenko_12Model.FK__Transactio__IdWH__4D94879B" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Yacenko_12Model.Users" Width="1.5" PointX="5.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
